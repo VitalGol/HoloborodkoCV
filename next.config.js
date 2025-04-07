@@ -6,8 +6,8 @@ const nextConfig = {
   basePath: "/HoloborodkoCV",
   reactStrictMode: true,
   images: { unoptimized: true },
-  assetPrefix: "/MyCV/",
-  // distDir: "out",
+  assetPrefix: "/HoloborodkoCV/",
+  distDir: "out",
 };
 
 module.exports = nextConfig;
