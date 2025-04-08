@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { IoMoonOutline } from 'react-icons/io5';
-import { GoSun } from 'react-icons/go';
+import * as React from "react";
+import { IoMoonOutline } from "react-icons/io5";
+import { GoSun } from "react-icons/go";
+import { Button } from "./ui/button";
 
 export default function ModeToggle({
   theme,
@@ -11,16 +12,23 @@ export default function ModeToggle({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setTheme: any;
 }) {
+  const themeContent = theme === "light" ? "dark" : "light";
   return (
-    <button
-      className="cursor-pointer"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+    <Button
+      variant="outline"
+      className="cursor-pointer text-[#486ca7] hover:text-[#1e5483] hover:bg-gray-200 p-0  dark:hover:bg-[#9cbbd6]"
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      {theme === 'light' ? (
-        <GoSun color="#486ca7" size={24} />
+      {theme === "light" ? (
+        <IoMoonOutline
+          color="#486ca7"
+          size={22}
+          className="text-[#486ca7] dark:text-[#70a3cf] scale-105"
+        />
       ) : (
-        <IoMoonOutline color="#486ca7" size={22} />
+        <GoSun color="#486ca7" size={24} className="scale-120" />
       )}
-    </button>
+      {themeContent}
+    </Button>
   );
 }

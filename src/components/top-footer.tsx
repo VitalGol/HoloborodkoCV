@@ -1,8 +1,8 @@
-import { skillsLine } from '../../src/data';
-import Marquee from 'react-fast-marquee';
+import { skillsLine } from "../../src/data";
+import Marquee from "react-fast-marquee";
 
 export default function TopFooter({ theme }: { theme: string | undefined }) {
-  const gradientTheme = theme === 'light' ? '#ffffff' : '#0a0a0a';
+  const gradientTheme = theme === "light" ? "#ffffff" : "#0a0a0a";
 
   return (
     <div className="flex w-full m-auto py-4 lg:py-8 text-gray-600 dark:text-[#7dacd6]">

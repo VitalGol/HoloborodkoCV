@@ -1,8 +1,9 @@
-import { skills } from '@/data';
+import { skills } from "@/data";
 
 export default function Skills() {
   return (
-    <div className="flex flex-col p-4  border-1 rounded-lg border-slate-400/50 dark:border-slate-400/50 ">
+    <div className="flex flex-col p-2 lg:p-4   lg:border-1 lg:rounded-lg  lg:border-slate-400/50 ">
+      {/* <div className="flex flex-col p-4 border-none  lg:border-1 lg:rounded-lg lg:border-slate-400/50 dark:lg:border-slate-400/50 "> */}
       <h1 className="text-xl lg:text-2xl uppercase font-semibold tracking-widest ">
         Skills
       </h1>
@@ -10,7 +11,7 @@ export default function Skills() {
         {skills.map((el) => {
           const iconPic =
             el.icon === null ? (
-              ''
+              ""
             ) : (
               <el.icon className="inline h-5 w-5 pb-1 ml-1" />
             );

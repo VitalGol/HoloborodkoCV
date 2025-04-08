@@ -25,12 +25,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import TopFooter from "./top-footer";
+import { Button } from "./ui/button";
 
 export default function Top() {
   const { theme, setTheme } = useTheme();
 
   const downloadCV = () => {
-    console.log("downloadCV");
     const link = document.createElement("a");
     const file = "Holoborodko-dev.pdf";
     link.href = "../Holoborodko-dev.pdf";
@@ -49,18 +49,23 @@ export default function Top() {
     window.open("https://telegram.im/@VitalyGol", "telegram");
   };
   return (
-    <div className="mt-2">
-      <nav className="flex flex-row justify-between items-center mb-2 md:mb-0">
+    <div className="mt-1">
+      <nav className="flex flex-row justify-between items-center mb-4 md:mb-0">
         <ModeToggle theme={theme} setTheme={setTheme} />
-        <div className="flex  items-start flex-row gap-4">
+        <div className="flex  items-start flex-row gap-0 sm:gap-1">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <TbFileCv
-                  size={24}
-                  className="text-[#486ca7] dark:text-[#70a3cf]"
+                <Button
+                  variant="outline"
+                  className="cursor-pointer"
                   onClick={downloadCV}
-                />
+                >
+                  <TbFileCv
+                    size={24}
+                    className="text-[#486ca7] dark:text-[#70a3cf] scale-125"
+                  />
+                </Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Download my CV&apos;s file</p>
@@ -72,10 +77,15 @@ export default function Top() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <BsQrCode
-                      size={21}
-                      className="text-[#486ca7] dark:text-[#70a3cf]"
-                    />
+                    <Button
+                      variant="outline"
+                      className="hidden sm:flex cursor-pointer"
+                    >
+                      <BsQrCode
+                        size={10}
+                        className="text-[#486ca7] dark:text-[#70a3cf]"
+                      />
+                    </Button>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Show QR code</p>
@@ -136,33 +146,34 @@ export default function Top() {
         </div>
         <div className="flex flex-row lg:flex-col justify-center items-center gap-12 lg:gap-1 mt-[-1.25rem] sm:mt-[-1.75rem] md:mt-[-1.5rem] lg:mt-0 ml-[-1rem] lg:ml-4 xl:ml-6 mr-20 ">
           {/* <div className="flex flex-row lg:flex-col justify-center items-center gap-12 lg:gap-1 mt-[-1.25rem] sm:mt-[-1.75rem] md:mt-[-.5rem] lg:mt-0 mr-20 lg:ml-4 xl:ml-6 "> */}
-          <button
-            type="button"
-            className="p-[6px] border rounded-md border-[#486ca7] dark:border-[#70a3cf] cursor-pointer"
+          <Button
+            variant="outline"
+            className="cursor-pointer text-[#486ca7] hover:text-[#1e5483] hover:bg-gray-200 p-0  dark:hover:bg-[#9cbbd6]"
+            // className="p-[6px] border rounded-md border-[#486ca7] dark:border-[#70a3cf] cursor-pointer"
             onClick={callMe}
           >
             <BsTelephone
               // size={18}
               className=" text-[#486ca7] dark:text-[#70a3cf] h-4 w-4 lg:h-4.5 lg:w-4.5 "
             />
-          </button>
-          <button
-            type="button"
-            className="p-[4px] border rounded-md border-[#385791] dark:border-[#70a3cf] "
+          </Button>
+          <Button
+            variant="outline"
+            className="cursor-pointer text-[#486ca7] hover:text-[#1e5483] hover:bg-gray-200 p-0  dark:hover:bg-[#9cbbd6]"
             onClick={writeMe}
           >
             <CiMail className="text-[#385791] dark:text-[#70a3cf] h-5 w-5 lg:h-5.5 lg:w-5.5 " />
-          </button>
-          <button
-            type="button"
-            className="p-[5px] border rounded-md border-[#385791] dark:border-[#70a3cf] "
+          </Button>
+          <Button
+            variant="outline"
+            className="cursor-pointer text-[#486ca7] hover:text-[#1e5483] hover:bg-gray-200 p-0  dark:hover:bg-[#9cbbd6]"
             onClick={telegram}
           >
             <PiTelegramLogo
               // size={20}
               className="text-[#385791] dark:text-[#70a3cf] h-4.5 w-4.5 lg:h-5 lg:w-5 "
             />
-          </button>
+          </Button>
         </div>
       </div>
       <TopFooter theme={theme} />
