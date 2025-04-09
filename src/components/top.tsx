@@ -14,23 +14,25 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+
 import TopFooter from "./top-footer";
 import { Button } from "./ui/button";
+
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Top() {
   const { theme, setTheme } = useTheme();
 
   const downloadCV = () => {
+    console.log("downloadCV");
     const link = document.createElement("a");
     const file = "Holoborodko-dev.pdf";
     link.href = "../Holoborodko-dev.pdf";
@@ -49,7 +51,7 @@ export default function Top() {
     window.open("https://telegram.im/@VitalyGol", "telegram");
   };
   return (
-    <div className="mt-1">
+    <div className="mt-2">
       <nav className="flex flex-row justify-between items-center mb-4 md:mb-0">
         <ModeToggle theme={theme} setTheme={setTheme} />
         <div className="flex  items-start flex-row gap-0 sm:gap-1">
@@ -72,11 +74,11 @@ export default function Top() {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <AlertDialog>
-            <AlertDialogTrigger>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
+          <Dialog>
+            <TooltipProvider>
+              <Tooltip>
+                <DialogTrigger asChild>
+                  <TooltipTrigger asChild>
                     <Button
                       variant="outline"
                       className="hidden sm:flex cursor-pointer"
@@ -87,20 +89,15 @@ export default function Top() {
                       />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Show QR code</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>
-                  <div className="text-center mb-4">
-                    Scan QR code for more information
-                  </div>
-                </AlertDialogTitle>
-                <AlertDialogDescription>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>
+                      <p className="text-center mb-4">
+                        Scan QR code for more information
+                      </p>
+                    </DialogTitle>
+                  </DialogHeader>
                   <div className="flex justify-center items-center">
                     <Image
                       src={qrCodePic}
@@ -110,17 +107,32 @@ export default function Top() {
                       height={100}
                       className="mr-4"
                     />
-                    You can use the QR code scanner.
-                    <br />I would be glad to communicate and am open to
-                    proposals for cooperation.
+                    <div className="flex flex-col">
+                      <p className="mb-2">You can use the QR code scanner.</p>
+                      <p>
+                        I would be glad to communicate and am open to proposals
+                        for cooperation.
+                      </p>
+                    </div>
                   </div>
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogAction>Return</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+                  <DialogFooter className="justify-end">
+                    <DialogClose asChild>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className=" cursor-pointer hover:bg-gray-200   dark:hover:bg-[#70a3cf]"
+                      >
+                        Close
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+                <TooltipContent>
+                  <p>Show QR code</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </Dialog>
         </div>
       </nav>
       <div className="flex flex-col lg:flex-row justify-center items-center] mt-[-2rem] sm:mt-[-2.5rem]  md:mt-0 ">
