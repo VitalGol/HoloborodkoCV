@@ -35,7 +35,8 @@ export default function Top() {
     console.log("downloadCV");
     const link = document.createElement("a");
     const file = "Holoborodko-dev.pdf";
-    link.href = "../Holoborodko-dev.pdf";
+    link.href = "./Holoborodko-dev.pdf";
+    // link.href = "../Holoborodko-dev.pdf";
     link.setAttribute("download", file);
     document.body.appendChild(link);
     link.click();
